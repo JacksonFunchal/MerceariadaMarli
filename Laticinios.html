@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Mercearia da Marli</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        
+        header {
+            background-color: #b30000;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+        
+        nav {
+            background-color: #1a1a1a;
+            padding: 0.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff3333;
+        }
+        
+        .banner {
+            height: 600px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/fachada800.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .banner-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #b30000;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ff3333;
+        }
+        
+        .categories {
+            padding: 3rem 2rem;
+            background-color: #f1f1f1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+        
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-img {
+            height: 1500px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #b30000;
+        }
+        
+        .category-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .offers {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .offers .section-title {
+            color: white;
+        }
+        
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .offer-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .offer-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff3333;
+            margin: 1rem 0;
+        }
+        
+        .offer-original {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        footer {
+            background-color: #b30000;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .banner-content h1 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div>
+                <div class="logo">Mini Mercearia da Marli</div>
+                <div class="tagline">Rapidez e Qualidade perto de você</div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Produtos.html">Produtos</a></li>
+            <li><a href="sobrenos.html">Sobre Nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    
+    
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <h1>Promoções Imperdíveis</h1>
+            <p>Confira nossas ofertas especiais desta semana</p>
+            
+        </div>
+    </section>
+    
+    <section class="categories" id="produtos">
+        <h2 class="section-title">Laticínios</h2>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <div class="category-img" style="background-image: url('img/beb2.jpeg');"></div>
+                <div class="category-content">
+                    <h3>Queijos, Leites e iogurtes</h3>
+                    
+                    
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    
+    <section class="offers" id="ofertas">
+        <h2 class="section-title">Confira Nossos Produtos </h2>
+        <div class="offers-container">
+            <div class="offer-card">
+                <h2>Queijo Fresco e Curado</h2>
+                <div class="offer-price">Confira</div>
+                <p class="offer-original"></p>
+                
+            </div>
+            
+            <div class="offer-card">
+                <h2>Margarina</h2>
+                <div class="offer-price">Confira</div>
+                <p class="offer-original"></p>
+               
+            </div>
+            
+            <div class="offer-card">
+                <h2>iogurtes</h2>
+                <div class="offer-price">Confira</div>
+                <p class="offer-original"></p>
+                
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Mini Mercearia da Marli</h3>
+                <p>Seu mercado de bairro com preços justos e produtos de qualidade.</p>
+            </div>
+            
+            <div class="footer-section contact-info">
+                <h3>Contato</h3>
+                <p>Rua Valter Chinaglia nº 3180 - Jardim Luiza II</p>
+                <p>Telefone: (11) 3456-7890</p>
+                <p>Email: contato@minimercadoexpresso.com.br</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Horário de Funcionamento</h3>
+                <p>Segunda a Sábado: 7h às 22h</p>
+                <p>Domingos e Feriados: 8h às 20h</p>
+            </div>
+            
+            <div class="footer-section social-links">
+                
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Mini Mercearia Da Marli - CNPJ:26.464.666/0001-94</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
